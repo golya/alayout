@@ -3,8 +3,11 @@ package co.globelist.globelist;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,16 +32,22 @@ public class Main extends BaseNavigationDrawerActivity {
     @Override
     protected void setupNavigationDrawerItem(ExtendableListView listView, BaseNavigationDrawerListAdapter navigationListAdapter) {
         listView.setBackgroundColor(Color.WHITE);
-        navigationListAdapter.addItem("item 1",
-                DrawableUtil.getDrawable(this, R.drawable.ic_menu_black_24dp));
-        navigationListAdapter.addItem("item 2",
-                DrawableUtil.getDrawable(this, R.drawable.ic_close_grey600_18dp));
+        Drawable normalState = DrawableUtil.getDrawable(this, R.drawable.ic_chat_black);
+        Drawable selectedState = DrawableUtil.getDrawable(this, R.drawable.ic_chat_white);
+        StateListDrawable iconDrawable1 = DrawableUtil.createStateListDrawable(
+                this, normalState, selectedState, selectedState, selectedState, normalState);
+        StateListDrawable iconDrawable2 = DrawableUtil.createStateListDrawable(
+                this, normalState, selectedState, selectedState, selectedState, normalState);
+
+        navigationListAdapter.addItem("Messages", iconDrawable1);
+        navigationListAdapter.addItem("Profile", iconDrawable2);
+
     }
 
     @Override
     protected View setupNavigationDrawerHeader() {
         AbsListView.LayoutParams params;
-        params = new AbsListView.LayoutParams(AdapterView.LayoutParams.MATCH_PARENT, Converter.dp2px(this, 20));
+        params = new AbsListView.LayoutParams(AdapterView.LayoutParams.MATCH_PARENT, Converter.dp2px(this, 200));
         LinearLayout header = new LinearLayout(this);
         header.setLayoutParams(params);
         header.setBackgroundColor(this.getResources().getColor(com.daililol.material.appbase.R.color.base_theme_blue));
@@ -52,18 +61,26 @@ public class Main extends BaseNavigationDrawerActivity {
 
     @Override
     protected int setupContentVew() {
+        Log.d("MAIN", "setup content");
         return R.layout.actionbar;
     }
 
     @Override
     protected void onMenuItemSelected(MenuItem menu) {
         switch (menu.getItemId()) {
-            case android.R.id.home:
-                //finish();
+            case R.id.messages:
+                Log.d("Main", "Messages");
                 break;
-            default:
+            case R.id.profile:
+                Log.d("Main", "Profile");
                 break;
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     @Override
@@ -72,7 +89,7 @@ public class Main extends BaseNavigationDrawerActivity {
 
     @Override
     protected boolean navigationOnItemClickListener(AdapterView<?> adapterView, View itemView, int position) {
-        return false;
+        return true;
     }
 
     @Override
