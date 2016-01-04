@@ -29,6 +29,12 @@ public class Main extends BaseNavigationDrawerActivity {
     }
 
     @Override
+    protected void onActivityCreated(Bundle savedInstanceState) {
+        this.requestBackIcon(DrawableUtil.getDrawable(this, R.drawable.ic_arrow_back_white_24dp));
+        this.setActionbarTitle("Globelist", Color.rgb(255, 255, 255));
+    }
+
+    @Override
     protected void setupNavigationDrawerItem(ExtendableListView listView, BaseNavigationDrawerListAdapter navigationListAdapter) {
         listView.setBackgroundColor(Color.WHITE);
         Drawable normalState = DrawableUtil.getDrawable(this, R.drawable.ic_chat_black);
@@ -49,13 +55,13 @@ public class Main extends BaseNavigationDrawerActivity {
         params = new AbsListView.LayoutParams(AdapterView.LayoutParams.MATCH_PARENT, Converter.dp2px(this, 200));
         LinearLayout header = new LinearLayout(this);
         header.setLayoutParams(params);
-        header.setBackgroundColor(this.getResources().getColor(com.daililol.material.appbase.R.color.base_theme_blue));
+        header.setBackgroundColor(Color.rgb(80, 8, 36));
         return header;
     }
 
     @Override
     protected Drawable setupThemeColor() {
-        return new ColorDrawable(Color.YELLOW);
+        return new ColorDrawable(Color.rgb(80, 8, 36));
     }
 
     @Override
@@ -76,14 +82,9 @@ public class Main extends BaseNavigationDrawerActivity {
         }
     }
 
-
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
-    }
-
-    @Override
-    protected void onActivityCreated(Bundle savedInstanceState) {
     }
 
     @Override
