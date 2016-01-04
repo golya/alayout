@@ -75,10 +75,10 @@ public class Main extends BaseNavigationDrawerActivity {
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         switch (position){
             case 1:
-                lanuch(Messages.class);
+                launch(Messages.class);
                 break;
             case 2:
-                lanuch(Profile.class);
+                launch(Profile.class);
                 break;
             default:
                 Log.d("Main", "Unknown menu item position: "+position);
@@ -142,7 +142,7 @@ public class Main extends BaseNavigationDrawerActivity {
 
     }
 
-    private void lanuch(Class destClass) {
+    private void launch(Class destClass) {
         Intent i = new Intent(getApplicationContext(), destClass);
         startActivity(i);
     }
