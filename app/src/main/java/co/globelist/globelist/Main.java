@@ -1,5 +1,6 @@
 package co.globelist.globelist;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -125,5 +126,10 @@ public class Main extends BaseNavigationDrawerActivity {
     @Override
     public void onDrawerStateChanged(int newState) {
 
+    }
+
+    private void lanuch(Class destClass) {
+        Intent i = new Intent(getApplicationContext(), destClass);
+        startActivity(i);
     }
 }
