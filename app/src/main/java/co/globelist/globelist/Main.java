@@ -72,6 +72,20 @@ public class Main extends BaseNavigationDrawerActivity {
     }
 
     @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        switch (position){
+            case 1:
+                lanuch(Messages.class);
+                break;
+            case 2:
+                lanuch(Profile.class);
+                break;
+            default:
+                Log.d("Main", "Unknown menu item position: "+position);
+        }
+    }
+
+    @Override
     protected void onMenuItemSelected(MenuItem menu) {
         switch (menu.getItemId()) {
             case R.id.messages:
