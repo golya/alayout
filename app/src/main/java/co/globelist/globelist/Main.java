@@ -44,10 +44,12 @@ public class Main extends BaseNavigationDrawerActivity {
                 this, normalState, selectedState, selectedState, selectedState, normalState);
         StateListDrawable iconDrawable2 = DrawableUtil.createStateListDrawable(
                 this, normalState, selectedState, selectedState, selectedState, normalState);
+        StateListDrawable iconDrawable3 = DrawableUtil.createStateListDrawable(
+                this, normalState, selectedState, selectedState, selectedState, normalState);
 
         navigationListAdapter.addItem("Messages", iconDrawable1);
         navigationListAdapter.addItem("Profile", iconDrawable2);
-
+        navigationListAdapter.addItem("News", iconDrawable3);
     }
 
     @Override
@@ -79,6 +81,9 @@ public class Main extends BaseNavigationDrawerActivity {
                 break;
             case 2:
                 launch(Profile.class);
+                break;
+            case 3:
+                launch(News.class);
                 break;
             default:
                 Log.d("Main", "Unknown menu item position: "+position);
