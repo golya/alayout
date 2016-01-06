@@ -31,7 +31,7 @@ public class Main extends BaseNavigationDrawerActivity {
 
     @Override
     protected void onActivityCreated(Bundle savedInstanceState) {
-        this.requestBackIcon(DrawableUtil.getDrawable(this, R.drawable.ic_arrow_back_white_24dp));
+        this.requestBackIcon(DrawableUtil.getDrawable(this, R.drawable.ic_menu_white));
         this.setActionbarTitle("Globelist", Color.rgb(255, 255, 255));
     }
 
